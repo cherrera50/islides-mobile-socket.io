@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Add {{itemName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Text</ion-label>
+    <ion-input type="text" [(ngModel)]="brainstormingItem.text"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-row class="colorselect color_{{color.slice(1,7)}}">
+      <ion-item>
+        <ion-label class="primarylabel">Color</ion-label>
+        <ion-select (click)="prepareColorSelector()" (ionChange)="setColor(this.color)" [(ngModel)]="color">
+          <ion-option (ionSelect)="selectColor(optioncolor)" *ngFor="let optioncolor of colors" [value]="optioncolor">{{optioncolor}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+  </ion-list>
+
+  <button ion-button block (click)="addItem(brainstormingItem)">Add {{itemName}}</button>
+
+</ion-content>
