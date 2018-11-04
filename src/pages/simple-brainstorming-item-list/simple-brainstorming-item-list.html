@@ -15,12 +15,14 @@
 <ion-content padding>
 
     <ion-list>
-        <ion-item *ngFor="let item of islidesItems; let i = index" [ngStyle]="{'background-color': item.color}">
+      <ng-container *ngFor="let item of islidesItems; let i = index">
+        <ion-item *ngIf="item.type === this.itemType" [ngStyle]="{'background-color': item.color}">
           <h2 [innerHtml]="item.text"></h2>
           <button (click)="deleteItem(i)" ion-button clear item-end>
             <ion-icon name="close"></ion-icon>
           </button>
         </ion-item>
+      </ng-container>
       </ion-list>
 
 </ion-content>
